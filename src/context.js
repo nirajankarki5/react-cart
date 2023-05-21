@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import reducerFn from "./reducerFn";
 import initialData from "./data";
 
@@ -29,6 +29,10 @@ const AppProvider = ({ children }) => {
   const minusQty = (id) => {
     dispatch({ type: "MINUS_QTY", id: id });
   };
+
+  useEffect(() => {
+    dispatch({ type: "GET_TOTAL_QUANTITY" });
+  }, [state.cart]);
 
   return (
     <AppContext.Provider

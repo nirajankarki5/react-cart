@@ -36,6 +36,23 @@ const reducerFn = (state, action) => {
     return { ...state, cart: newCart };
   }
 
+  if (action.type === "GET_TOTAL_QUANTITY") {
+    const { quantity, total } = state.cart.reduce(
+      (finalValue, cartItem) => {
+        const newQuantity = finalValue.quantity + cartItem.quantity;
+        const newTotal = finalValue.total + cartItem.quantity * cartItem.price;
+
+        return { quantity: newQuantity, total: newTotal };
+      },
+      {
+        quantity: 0,
+        total: 0,
+      }
+    );
+
+    return { ...state, quantity, total };
+  }
+
   return state;
 };
 
