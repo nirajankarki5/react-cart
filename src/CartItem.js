@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import { AppContext } from "./context";
 
-const CartItem = ({ title, price, quantity, img }) => {
+const CartItem = ({ id, title, price, quantity, img }) => {
+  const { removeItem } = useContext(AppContext);
+
   return (
     <div className="cart-item">
       <div className="item1">
@@ -8,7 +12,7 @@ const CartItem = ({ title, price, quantity, img }) => {
         <div className="details">
           <h3>{title}</h3>
           <p>${price}</p>
-          <button>remove</button>
+          <button onClick={() => removeItem(id)}>remove</button>
         </div>
       </div>
       <div className="cart-qty-container">
