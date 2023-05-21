@@ -3,7 +3,7 @@ import CartItem from "./CartItem";
 import { AppContext } from "./context";
 
 const CartContainer = () => {
-  const { isLoading, cart, clearCart } = useContext(AppContext);
+  const { isLoading, cart, clearCart, total } = useContext(AppContext);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -23,7 +23,7 @@ const CartContainer = () => {
       <hr />
       <div className="total-container">
         <h2>Total:</h2>
-        <h2>$1099.99</h2>
+        <h2>${total}</h2>
       </div>
       <div className="clear-cart-btn">
         <button onClick={clearCart}>Clear Cart</button>

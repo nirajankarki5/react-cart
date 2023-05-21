@@ -3,7 +3,7 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { AppContext } from "./context";
 
 const CartItem = ({ id, title, price, quantity, img }) => {
-  const { removeItem } = useContext(AppContext);
+  const { removeItem, addQty, minusQty } = useContext(AppContext);
 
   return (
     <div className="cart-item">
@@ -16,9 +16,9 @@ const CartItem = ({ id, title, price, quantity, img }) => {
         </div>
       </div>
       <div className="cart-qty-container">
-        <IoIosArrowUp className="icon-btn" />
+        <IoIosArrowUp className="icon-btn" onClick={() => addQty(id)} />
         <p>{quantity}</p>
-        <IoIosArrowDown className="icon-btn" />
+        <IoIosArrowDown className="icon-btn" onClick={() => minusQty(id)} />
       </div>
     </div>
   );
